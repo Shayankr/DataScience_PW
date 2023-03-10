@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
 )
 print(mydb)
 mycursor = mydb.cursor()
-mycursor.execute("SHOW DATABASES")
-for x in mycursor:
-  print(x)
+mycursor.execute("CREATE DATABASE IF NOT EXISTS test1")
+mycursor.execute("CREATE TABLE IF NOT EXISTS test1.test_table (c1 INT, c2 VARCHAR(50), c3 INT, c4 FLOAT)")
+
 mydb.close()
