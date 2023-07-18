@@ -1,0 +1,54 @@
+if i want to convert pandas df into numpy array:
+1. df.to_numpy()
+2. np.asarray(df)
+
+what is the difference b/w these 2 based on use-cases 
+
+--------------------------------------------------------------
+
+Both df.to_numpy() and np.asarray(df) are used to convert a Pandas DataFrame (df) into a NumPy array. 
+However, there are some differences between the two methods based on use-cases and their behavior. 
+Let's explore these differences:
+
+---------
+
+1. df.to_numpy():
+
+    This is a DataFrame method, which means you call it directly on the DataFrame (df).
+    It is available in newer versions of Pandas (version 0.24.0 and above).
+    It provides the ability to handle mixed data types in the DataFrame more efficiently.
+    If the DataFrame contains any non-numeric data types (e.g., strings or objects), 
+        df.to_numpy() will return an object array, which preserves the data types of all elements in the DataFrame. 
+        This is especially useful if your DataFrame has columns with different data types.
+    However, when the DataFrame contains only numeric data types (e.g., integers or floats), df.to_numpy() will return a 
+    homogeneous array (e.g., a 2D NumPy array of floats).
+    This method does not support the dtype parameter, so the data type of the resulting NumPy array will be automatically 
+    determined based on the DataFrame's data types.
+
+
+
+2. np.asarray(df):
+
+    This is a NumPy function (np.asarray), which means you call it as a function and pass the DataFrame (df) as an argument.
+    It is available in all versions of NumPy and Pandas.
+    It behaves similarly to df.to_numpy() when the DataFrame contains only numeric data types. It returns a homogeneous array 
+        with the same data types as the original DataFrame.
+    However, unlike df.to_numpy(), np.asarray(df) supports the dtype parameter. You can specify the desired data type of the 
+        resulting NumPy array using the dtype parameter. This can be useful when you want to ensure a specific data type for 
+        the resulting array.
+
+
+
+Advantages of df.to_numpy():
+
+    More efficient handling of mixed data types in DataFrames.
+    Automatically preserves data types when the DataFrame has non-numeric columns.
+    Shorter syntax as it is a DataFrame method.
+
+
+
+Advantages of np.asarray(df):
+
+    Available in all versions of Pandas and NumPy.
+    Allows specifying the desired data type using the dtype parameter.
+--------------------------------------------------------------------------------------------------------------------------------
